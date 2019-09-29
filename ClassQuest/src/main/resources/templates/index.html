@@ -14,6 +14,7 @@
 	<link th:href="@{/css/slick.css}" rel="stylesheet" type="text/css">
 	<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
 	<link th:href="@{/css/login.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/hamburgers.min.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -49,11 +50,40 @@
 				</div>
 				
 				<div class="col-lg-5">
-					<div class="banner_img d-none d-lg-block">
-						<img src="imgs/banner_img.png" alt="">
+					<div class="limiter">
+					<div class="wrap-login100">
+						<form class="login100-form validate-form">
+							<span class="login100-form-title">Entrar</span>
+
+							<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+								<input class="input100" type="text" name="email" placeholder="Email"> 
+								<span class="focus-input100"></span>
+									<span class="symbol-input100"> 
+										<i class="fa fa-envelope" aria-hidden="true"></i>
+									</span>
+							</div>
+
+							<div class="wrap-input100 validate-input" data-validate="Password is required">
+								<input class="input100" type="password" name="senha" placeholder="Password">
+								<span class="focus-input100"></span>
+									<span class="symbol-input100"> 
+										<i class="fa fa-lock" aria-hidden="true"></i>
+									</span>
+							</div>
+
+							<div class="container-login100-form-btn">
+								<button class="login100-form-btn">Login</button>
+							</div>
+
+							<div class="text-center p-t-12">
+								<span class="txt1"> Forgot </span> 
+									<a class="txt2" href="#">
+										Username / Password? </a>
+							</div>
+						</form>	
 					</div>
 				</div>
-				
+				</div>			
 			</div>
 		</div>
 	</section>
@@ -213,6 +243,6 @@
 	<script th:src="@{/js/jquery.min.js}"></script>
 	<script th:src="@{/js/popper.min.js}"></script>
 	<script th:src="@{/js/bootstrap.min.js}"></script>
-	
+	<script th:src="@{/js/login.js}"></script>
 </body>
 </html>
