@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:th="http://www.thymeleaf.org"
-	  xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
-	  layout:decorate="~{layout}">	
+<html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+        layout:decorate="~{layout}">	
 <head>
 	<meta charset="UTF-8">
 	<title>Nova Turma</title>
@@ -16,24 +14,36 @@
 				<div class="row">
 				
 					<div class="col-md-12">
-						<form id="RegisterValidation" action="" method="">
+						<form id="RegisterValidation" th:object="${turma}" th:action="@{/turma/saveTurma}" method="POST">
+							<input id="id" name="id" type="hidden" th:field="*{id}" th:value="*{id}">
 							<div class="card ">
-								<div class="card-header card-header-rose card-header-icon">
+								<div class="card-header  card-header-icon card-header-info">
 									<div class="card-icon">
-										<i class="material-icons">mail_outline</i>
+										<i class="material-icons">picture_in_picture_alt</i>
 									</div>
 									<h4 class="card-title">Nova Turma</h4>
-								</div>
+									</div>
 								<div class="card-body ">
-									<div class="category form-category">* Required fields</div>
-									<div class="form-group">
-										<label for="exampleEmail" class="bmd-label-floating"> Nome *</label> 
-										<input type="nome" class="form-control" id="nome" required="true">
+									<div class="category form-category"><span style="color: red">*</span>Campos obrigatórios!</div>
+									<div class="row">    
+										<div class="col-md-8">
+											<div class="form-group">
+												<label for="exampleEmail" class="bmd-label-floating"> Nome <span style="color: red">*</span></label> 
+												<input type="text" class="form-control" id="nome" th:field="*{nome}" required/>
+											</div>
+										</div>
+										
+										<div class="col-md-2">
+											<div class="form-group">
+												<label for="exampleEmail" class="bmd-label-floating"> Codigo </label> 
+												<input type="text" class="form-control" id="codigo" th:field="*{codigo}" disabled/>
+											</div>
+										</div>
 									</div>
 								</div>
 								
 								<div class="card-footer text-right">
-									<button type="submit" class="btn btn-rose">Register</button>
+									<button type="submit" class="btn btn-info">Salvar</button>
 								</div>
 								
 							</div>

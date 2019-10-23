@@ -26,7 +26,7 @@ public class Turma implements Serializable{
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	
 	@Column(length = 50, nullable = false)
 	@NotBlank(message="Nome é uma informação obrigatoria!")
@@ -53,11 +53,11 @@ public class Turma implements Serializable{
 		status = Status.ATIVO;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
