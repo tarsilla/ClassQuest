@@ -1,14 +1,24 @@
 package br.com.classquest.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class IndexController {
 
-	@GetMapping("/")
-	public ModelAndView index() {
-		return new ModelAndView("index");	
+	@RequestMapping("/")
+	public String home() {
+		return "home";
+	}
+	
+	@RequestMapping(method=RequestMethod.POST,path= {"/index"})
+	public String index() {
+		return "home";
+	}
+	
+	@RequestMapping(method=RequestMethod.GET,path= {"/entrar"})
+	public String entrar() {
+		return "index";
 	}
 }

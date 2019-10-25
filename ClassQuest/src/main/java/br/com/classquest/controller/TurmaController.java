@@ -29,7 +29,7 @@ public class TurmaController {
 		}
 		service.save(turma);
 		atribute.addFlashAttribute("mensagem","Turma Cadastrada com sucesso!");
-		ModelAndView mv = new ModelAndView("redirect:/turma/listaTurma");
+		ModelAndView mv = new ModelAndView("redirect:/turma/minhaTurma");
 		return mv;
 	}
 	
@@ -57,6 +57,11 @@ public class TurmaController {
 		ModelAndView view = new ModelAndView("turma/minhaTurma");
 		view.addObject("turmas", service.findAll());
 		return view;
+	}
+	
+	@GetMapping("/verTurma")
+	public ModelAndView verTurma() {
+		return new ModelAndView("turma/verTurma");	
 	}
 	
 }

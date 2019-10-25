@@ -1,6 +1,8 @@
 package br.com.classquest.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,11 +11,15 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import br.com.classquest.enums.Status;
+import br.com.classquest.enums.TipoUsuario;
 
 @Entity
 public class Usuario implements Serializable{
@@ -35,6 +41,9 @@ public class Usuario implements Serializable{
 	@NotBlank(message="Email é uma informação obrigatoria!")
 	private String email;
 	
+	@Column(unique = true)
+	private String username;
+	
 	@Column(nullable=false, length=70)
 	@NotBlank(message="Senha é uma informação obrigatoria!")
 	private String senha;
@@ -43,6 +52,10 @@ public class Usuario implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private Status status;
 	
+	@Column(nullable=false)
+	@Enumerated(EnumType.STRING)
+	private TipoUsuario tipousuario;
+		
 	@Lob
 	private byte[] foto;
 	
@@ -52,6 +65,34 @@ public class Usuario implements Serializable{
 	@OneToOne(optional = true)
 	private Professor professor;
 	
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@ManyToMany
+	private Set<Role> role = new HashSet<Role>();
+	
+	public Set<Role> getRole() {
+		return role;
+	}
+
+	public void setRole(Set<Role> role) {
+		this.role = role;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public TipoUsuario getTipousuario() {
+		return tipousuario;
+	}
+
+	public void setTipousuario(TipoUsuario tipousuario) {
+		this.tipousuario = tipousuario;
+	}
+
 	public Usuario() {
 		status = Status.ATIVO;
 	}

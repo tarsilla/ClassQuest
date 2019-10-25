@@ -24,22 +24,22 @@
 									<h4 class="card-title">Nova Turma</h4>
 									</div>
 								<div class="card-body ">
-									<div class="category form-category"><span style="color: red">*</span>Campos obrigatórios!</div>
-									<div class="row">    
-										<div class="col-md-8">
-											<div class="form-group">
-												<label for="exampleEmail" class="bmd-label-floating"> Nome <span style="color: red">*</span></label> 
-												<input type="text" class="form-control" id="nome" th:field="*{nome}" required/>
-											</div>
-										</div>
-										
-										<div class="col-md-2">
-											<div class="form-group">
-												<label for="exampleEmail" class="bmd-label-floating"> Codigo </label> 
-												<input type="text" class="form-control" id="codigo" th:field="*{codigo}" disabled/>
-											</div>
-										</div>
-									</div>
+									<p class="card-category">campos obrigatorios <span style="color: red">*</span></p>
+	            	
+				                    <div class="row">                   
+				                    	<div class="col-md-8">
+					                 		<div class="form-group">
+					                        	<label>Nome da Turma<span style="color: red">*</span></label>
+					                        	<input type="text" id="nome" th:field="*{nome}" class="form-control" placeholder="ex:. geografia 2019.2" required>
+					                      	</div>                		
+					                	</div>
+					                	<div class="col-md-2">
+					                 		<div class="form-group">
+					                        	<label>Código<span style="color: red">*</span></label>
+					                        	<input type="text" id="codigo" th:field="*{codigo}" class="form-control" required>
+					                      	</div>                		
+					                	</div>
+				                    </div> 
 								</div>
 								
 								<div class="card-footer text-right">
@@ -57,3 +57,4 @@
 
 	</div>
 </body>
+</html>

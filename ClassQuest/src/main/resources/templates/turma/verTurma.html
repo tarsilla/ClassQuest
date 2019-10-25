@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+        layout:decorate="~{layout}">	
+<head>
+	<meta charset="UTF-8">
+	<title>Ver Turma</title>
+</head>
+<body>
+    <div layout:fragment="corpo">
+    
+		<div class="content">
+			<div class="container-fluid">
+			
+				<div class="row">
+					<div class="col-md-12">
+						<form id="RegisterValidation" th:object="${turma}" th:action="@{/turma/verTurma}" method="POST">
+							
+						</form>
+					</div>		
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
