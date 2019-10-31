@@ -1,6 +1,6 @@
 package br.com.classquest.model;
 
-import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,23 +12,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import br.com.classquest.enums.Status;
 import br.com.classquest.enums.TipoUsuario;
 
 @Entity
-public class Usuario implements Serializable{
+public class Usuario implements UserDetails {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue
 	private int id;
@@ -46,7 +47,7 @@ public class Usuario implements Serializable{
 	
 	@Column(nullable=false, length=70)
 	@NotBlank(message="Senha é uma informação obrigatoria!")
-	private String senha;
+	private String password;
 	
 	@Column(nullable=false)
 	@Enumerated(EnumType.STRING)
@@ -55,15 +56,16 @@ public class Usuario implements Serializable{
 	@Column(nullable=false)
 	@Enumerated(EnumType.STRING)
 	private TipoUsuario tipousuario;
-		
-	@Lob
-	private byte[] foto;
 	
-	@OneToOne(optional = true)
+	/*@OneToOne(optional = true)
 	private Aluno aluno;
 	
 	@OneToOne(optional = true)
-	private Professor professor;
+	private Professor professor;*/
+	
+		
+	@Lob
+	private byte[] foto;
 	
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany
@@ -121,12 +123,8 @@ public class Usuario implements Serializable{
 		this.email = email;
 	}
 
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Status getStatus() {
@@ -145,24 +143,40 @@ public class Usuario implements Serializable{
 		this.foto = foto;
 	}
 
-	public Aluno getAluno() {
-		return aluno;
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		Set<GrantedAuthority> authorities = new HashSet<>();
+		authorities.addAll(getRole());
+		return authorities;
 	}
 
-	public void setAluno(Aluno aluno) {
-		this.aluno = aluno;
+	@Override
+	public String getPassword(){
+		return this.password;
 	}
 
-	public Professor getProfessor() {
-		return professor;
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
-	public void setProfessor(Professor professor) {
-		this.professor = professor;
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

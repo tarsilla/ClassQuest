@@ -25,25 +25,35 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		
-		String username = "admin";
+		System.out.println("----- Criando Usuário ------");
+		creatUsuarioAdmin();
+		System.out.println("----- Usuário Criado com Sucesso! -----");
+	}
+	
+	private void creatUsuarioAdmin() {
+	
+		/*String username = "admin";
 		Usuario user = userService.findByUsername(username);
 		
+		if(user == null){
 			Usuario admin = new Usuario();
 			admin.setNome("Professor");
-			admin.setId(1);
 			admin.setEmail("professor@gmail.com");
 			admin.setUsername("professor");
 			admin.setTipousuario(TipoUsuario.PROFESSOR);
 			admin.setStatus(Status.ATIVO);
-			admin.setSenha(new BCryptPasswordEncoder().encode("12345"));
+			admin.setPassword(new BCryptPasswordEncoder().encode("12345"));
 			
 			Role rolepro = roleService.findByUsername("PRO");
 			admin.getRole().add(rolepro);
+			
 			
 			Role rolealu = roleService.findByUsername("ALU");
 			admin.getRole().add(rolealu);
 			
 			userService.save(admin);
+					
+		}*/
 	}
 	
 }

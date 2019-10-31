@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class IndexController {
 
 	@RequestMapping("/")
-	public String home() {
-		return "home";
+	public String login() {
+		return "login";
 	}
 	
-	@RequestMapping(method=RequestMethod.POST,path= {"/index"})
-	public String index() {
+	@RequestMapping(method=RequestMethod.POST,path= {"/home"})
+	public String home() {
 		return "home";
 	}
 	
 	@RequestMapping(method=RequestMethod.GET,path= {"/entrar"})
 	public String entrar() {
-		return "index";
+		return "login";
 	}
 }

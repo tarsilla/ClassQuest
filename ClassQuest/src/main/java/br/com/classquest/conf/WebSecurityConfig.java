@@ -22,17 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests()
-				.antMatchers("/perfil/**").hasAnyAuthority("PRO", "ALU")
-				.antMatchers("/questionario/**").hasAnyAuthority("PRO")
-				.antMatchers("/turma/novaTurma").hasAnyAuthority("PRO")
-				.antMatchers("/turma/minhaTurma").permitAll()
-				.antMatchers("/turma/verTurma").permitAll()
-				.antMatchers("/").hasAnyAuthority("PRO", "ALU")
-				.antMatchers("/usuario/**").hasAnyAuthority("PRO", "ALU")
-				.antMatchers("http://**").permitAll()
-				.antMatchers("https://**").permitAll()
-				.antMatchers("layout").permitAll()
+		http.authorizeRequests()
 				.antMatchers("/imgs/**").permitAll()
 				.antMatchers("/static/**").permitAll()
 				.antMatchers("/resources/**").permitAll()
@@ -44,7 +34,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/webfonts/**").permitAll()
 				.anyRequest().authenticated()
 				.and().formLogin().loginPage("/entrar").permitAll()
-				.successForwardUrl("/home").and().logout().permitAll()
+				
+				.successForwardUrl("/index").and().logout().permitAll()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/entrar");
 		
 		http.csrf().disable();
@@ -62,10 +53,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 
-	@Override
-	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/resources/**", "/static/**", "/assets/**", "/css/**", "/fonts/**", "/imgs/**",
-				"/js/**", "/sass/**", "/webfonts/**", "/h2/**");
-		web.ignoring().antMatchers("/layout", "http::/**", "https::/**");
-	}
 }

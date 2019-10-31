@@ -12,5 +12,5 @@ public class QuestionarioController {
 	@GetMapping("/questao")
 	   public ModelAndView view (){
 		   return new ModelAndView("/questionario/questao");
-	   }
+	}
 }

@@ -29,7 +29,7 @@ public class UsuarioController {
 	@GetMapping("/add")
 	public ModelAndView add(Usuario usuario) {
 		
-		ModelAndView mv = new ModelAndView("usuario/form");
+		ModelAndView mv = new ModelAndView("usuario/cadastro");
 		mv.addObject("usuario", usuario);
 		mv.addObject("roles", servicerole.buscarTodos());
 		
@@ -43,8 +43,8 @@ public class UsuarioController {
 			return add(usuario);
 		}
 		
-		String senha = usuario.getSenha();
-		usuario.setSenha(new BCryptPasswordEncoder().encode(senha));
+		String senha = usuario.getPassword();
+		usuario.setPassword(new BCryptPasswordEncoder().encode(senha));
 		
 		service.save(usuario);
 		

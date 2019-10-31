@@ -47,7 +47,7 @@ public class UsuarioService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserDetails user = (UserDetails) repository.findByUsername(username);
+		UserDetails user = repository.findByUsername(username);
 		
 		org.springframework.security.core.userdetails.User userFinal = new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getPermissoes(user));
 		System.out.println(userFinal.getAuthorities());
@@ -63,6 +63,8 @@ public class UsuarioService implements UserDetailsService {
 		for( Role r : permissoes ) {
 			 authorities.add( new SimpleGrantedAuthority(r.getNome().toUpperCase() ) );
 		}
+		
+		
 		return authorities;
 	}
 }
