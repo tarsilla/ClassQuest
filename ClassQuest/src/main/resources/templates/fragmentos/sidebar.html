@@ -12,17 +12,10 @@
     </div>
       
     <div class="sidebar-wrapper">
-
-    	<div class="user">
-
-        	<div class="photo">
-            	<img  th:src="@{/assets/img/faces/avatar.jpg}" />
-          	</div>
-        </div>
         
         <ul class="nav">
         	<li class="nav-item">
-            	<a class="nav-link" th:href="@{/home}">
+            	<a class="nav-link" th:href="@{/}">
               		<i class="material-icons">dashboard</i>
               		<span>Home</span>
             	</a>
@@ -38,16 +31,20 @@
           	<li  class="nav-item ">
             	<a class="nav-link" data-toggle="collapse" href="#cadastros">
               		<i class="material-icons">picture_in_picture_alt</i>
-              		<p>Turma<b class="caret"></b></p>
+              		<p>
+              			Turma
+              			<b class="caret"></b>
+              		</p>
             	</a>     	
             	<div class="collapse" id="cadastros">
               		<ul class="nav">
-              		    <li class="nav-item ">
-		                  	<a class="nav-link" th:href="@{/turma/cadastro}">
-		                    	<i class="material-icons">add_circle</i>
-		                    	<span class="sidebar-normal">Nova Turma</span>
-		                    </a>
-		                 </li>
+
+	              		    <li class="nav-item ">
+			                  	<a class="nav-link" th:href="@{/turma/cadastro}">
+			                    	<i class="material-icons">add_circle</i>
+			                    	<span class="sidebar-normal">Nova Turma</span>
+			                    </a>
+			                 </li>
                 		<li class="nav-item" >
                   			<a class="nav-link" th:href="@{/turma/minhaTurma}">
                   				<i class="material-icons">view_agenda</i>
@@ -58,37 +55,36 @@
                </div>
           </li>
           
-          <li  class="nav-item">
-            	<a class="nav-link" data-toggle="collapse" href="#questoes">
-              		<i class="material-icons">account_balance</i>
-              		<p> Banco de Questões <b class="caret"></b></p>
-            	</a>     	
-            	<div class="collapse" id="questoes">
-              		<ul class="nav">
-                		<li class="nav-item">
-                  			<a class="nav-link" th:href="@{/questao/questao}">
-                    			<i class="material-icons">add_circle</i>
-                    			<span class="sidebar-normal"> Adicionar Questão</span>
-                  			</a>
-                		</li>      		
-                		 <li class="nav-item ">
-		                  	<a class="nav-link">
-		                    	<i class="material-icons">chrome_reader_mode</i>
-		                    	<span class="sidebar-normal"> Gerenciar Questões</span>
-		                    </a>
-		                 </li>
-		                 <li class="nav-item ">
-		                  	<a class="nav-link">
-		                    	<i class="material-icons">find_in_page</i>
-		                    	<span class="sidebar-normal"> Consultar</span>
-		                    </a>
-		                 </li>
-                   </ul>
-               </div>
-          </li>
-          
+	          <li  class="nav-item">
+	            	<a class="nav-link" data-toggle="collapse" href="#questoes">
+	              		<i class="material-icons">account_balance</i>
+	              		<p> Banco de Questões <b class="caret"></b></p>
+	            	</a>     	
+	            	<div class="collapse" id="questoes">
+	              		<ul class="nav">
+	                		<li class="nav-item">
+	                  			<a class="nav-link" th:href="@{/questao/questao}">
+	                    			<i class="material-icons">add_circle</i>
+	                    			<span class="sidebar-normal"> Adicionar Questão</span>
+	                  			</a>
+	                		</li>      		
+	                		 <li class="nav-item ">
+			                  	<a class="nav-link">
+			                    	<i class="material-icons">chrome_reader_mode</i>
+			                    	<span class="sidebar-normal"> Gerenciar Questões</span>
+			                    </a>
+			                 </li>
+			                 <li class="nav-item ">
+			                  	<a class="nav-link">
+			                    	<i class="material-icons">find_in_page</i>
+			                    	<span class="sidebar-normal"> Consultar</span>
+			                    </a>
+			                 </li>
+	                   </ul>
+	               </div>
+	          </li>
           <li class="nav-item">
-            	<a class="nav-link" th:href="@{/login/home}">
+            	<a class="nav-link" th:href="@{/logout}">
               		<i class="material-icons">forward</i>
               		<span>Sair</span>
             	</a>

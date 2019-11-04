@@ -28,6 +28,7 @@
 							<tr>
 								<th class="text-center">#</th>
 								<th>Nome</th>
+								<th>Código</th>
 								<th class="text-right">Ações</th>
 							</tr>
 						</thead>
@@ -37,6 +38,7 @@
 							
 								<td class="text-center" th:text="${turma.id}"></td>
 								<td th:text="${turma.nome}"></td>
+								<td th:text="${turma.codigo}"></td>
                         		
 								<td class="td-actions text-right">
 									<a th:href="@{/turma/verTurma}">

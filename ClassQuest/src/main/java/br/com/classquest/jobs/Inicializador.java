@@ -31,11 +31,11 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 	}
 	
 	private void creatUsuarioAdmin() {
-	
-		/*String username = "admin";
+		
+		String username = "admin";
 		Usuario user = userService.findByUsername(username);
 		
-		if(user == null){
+		/*if(user == null){
 			Usuario admin = new Usuario();
 			admin.setNome("Professor");
 			admin.setEmail("professor@gmail.com");
@@ -54,6 +54,7 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 			userService.save(admin);
 					
 		}*/
+		
 	}
 	
 }

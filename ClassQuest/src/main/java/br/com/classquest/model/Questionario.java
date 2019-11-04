@@ -21,7 +21,7 @@ public class Questionario implements Serializable {
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	
 	@Column(length = 100, nullable = false)
 	@NotBlank(message="Titulo é uma informação obrigatoria!")
@@ -49,11 +49,11 @@ public class Questionario implements Serializable {
 		numQuestoes = 10;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

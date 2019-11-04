@@ -20,7 +20,7 @@ public class Alternativa implements Serializable{
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	
 	@Column(columnDefinition = "TEXT", nullable = false)
 	private String texto;
@@ -34,11 +34,11 @@ public class Alternativa implements Serializable{
 	@ManyToOne
 	private Questao questao;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

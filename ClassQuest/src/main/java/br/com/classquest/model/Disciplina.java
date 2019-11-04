@@ -20,7 +20,7 @@ public class Disciplina implements Serializable{
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	
 	@Column(length = 50, nullable = false)
 	@NotBlank(message="Descrição é uma informação obrigatoria!")
@@ -29,11 +29,11 @@ public class Disciplina implements Serializable{
 	@OneToMany(mappedBy = "disciplina")
 	private List<Tema> temas;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

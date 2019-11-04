@@ -24,7 +24,7 @@ public class Questao implements Serializable{
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	
 	@Column(columnDefinition = "TEXT", nullable = false)
 	private String informacao;
@@ -46,11 +46,11 @@ public class Questao implements Serializable{
 	@ManyToOne
 	private Professor professor;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

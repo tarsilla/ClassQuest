@@ -21,7 +21,7 @@ public class Tema implements Serializable {
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	
 	@Column(length = 80, nullable = false)
 	@NotBlank(message="Assunto é uma informação obrigatoria!")
@@ -33,11 +33,11 @@ public class Tema implements Serializable {
 	@OneToMany(mappedBy = "tema")
 	private List<Questao> questoes;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

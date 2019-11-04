@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class IndexController {
 
 	@RequestMapping("/")
-	public String login() {
-		return "login";
+	public String index() {
+		return "index";
 	}
 	
-	@RequestMapping(method=RequestMethod.POST,path= {"/home"})
-	public String home() {
-		return "home";
+	@RequestMapping(method=RequestMethod.POST,path= {"/index"})
+	public String login() {
+		return "index";
 	}
 	
 	@RequestMapping(method=RequestMethod.GET,path= {"/entrar"})

@@ -18,7 +18,7 @@ public class Professor implements Serializable{
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	
 	@OneToMany(mappedBy = "professor")
 	private List<Turma> turmas;

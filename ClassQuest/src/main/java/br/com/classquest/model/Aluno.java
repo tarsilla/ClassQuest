@@ -20,7 +20,7 @@ public class Aluno implements Serializable{
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	
 	@Column(nullable=false)
 	@NotBlank(message="Pontuação é uma informação obrigatoria!")

@@ -12,7 +12,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
-import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -29,40 +28,35 @@ public class Usuario implements UserDetails {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	
 	@Column(nullable=false, length=70)
-	@NotBlank(message="Nome é uma informação obrigatoria!")
 	private String nome;
 	
 	@Column(nullable=false, length=70)
-	@NotBlank(message="Email é uma informação obrigatoria!")
 	private String email;
 	
 	@Column(unique = true)
 	private String username;
 	
 	@Column(nullable=false, length=70)
-	@NotBlank(message="Senha é uma informação obrigatoria!")
 	private String password;
 	
 	@Column(nullable=false)
 	@Enumerated(EnumType.STRING)
 	private Status status;
-	
-	@Column(nullable=false)
-	@Enumerated(EnumType.STRING)
+
 	private TipoUsuario tipousuario;
-	
+
 	/*@OneToOne(optional = true)
 	private Aluno aluno;
 	
 	@OneToOne(optional = true)
 	private Professor professor;*/
-	
 		
 	@Lob
 	private byte[] foto;
@@ -99,11 +93,11 @@ public class Usuario implements UserDetails {
 		status = Status.ATIVO;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
