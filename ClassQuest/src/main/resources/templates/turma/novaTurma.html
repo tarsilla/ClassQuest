@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+        layout:decorate="~{layout}">	
+<head>
+	<meta charset="UTF-8">
+	<title>Nova Turma</title>
+</head>
+<body>
+    <div layout:fragment="corpo">
+    
+		<div class="content">
+			<div class="container-fluid">
+			
+				<div class="row">
+				
+					<div class="col-md-12">
+						<form id="RegisterValidation" th:object="${turma}" th:action="@{/turma/saveTurma}" method="POST">
+							<input id="id" name="id" type="hidden" th:field="*{id}" th:value="*{id}">
+							<div class="card ">
+								<div class="card-header  card-header-icon card-header-info">
+									<div class="card-icon">
+										<i class="material-icons">picture_in_picture_alt</i>
+									</div>
+									<h4 class="card-title">Nova Turma</h4>
+									</div>
+								<div class="card-body ">
+									<p class="card-category">campos obrigatorios <span style="color: red">*</span></p>
+	            	
+				                    <div class="row">                   
+				                    	<div class="col-md-8">
+					                 		<div class="form-group">
+					                        	<label>Nome da Turma<span style="color: red">*</span></label>
+					                        	<input type="text" id="nome" th:field="*{nome}" class="form-control" placeholder="ex:. geografia 2019.2" required>
+					                      	</div>                		
+					                	</div>
+					                	<div class="col-md-2">
+					                 		<div class="form-group">
+					                        	<label>Código<span style="color: red">*</span></label>
+					                        	<input type="text" id="codigo" th:field="*{codigo}" class="form-control" required>
+					                      	</div>                		
+					                	</div>
+				                    </div> 
+								</div>
+								
+								<div class="card-footer text-right">
+									<button type="submit" class="btn btn-info">Salvar</button>
+								</div>
+								
+							</div>
+						</form>
+						
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

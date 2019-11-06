@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.w3.org/1999/xhtml" layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8">
+<title>Adicionar Questão</title>
+</head>
+<body>
+	<div layout:fragment="corpo">
+
+		<div class="content">
+			<div class="container-fluid">
+
+				<div class="row">
+
+					<div class="col-md-12">
+						<form id="RegisterValidation" th:object="${questao}"
+							th:action="@{questionario/questao}" method="POST">
+							
+							<div class="card ">
+								<div class="card-header  card-header-icon card-header-info">
+									<div class="card-icon">
+										<i class="material-icons">add</i>
+									</div>
+									<h4 class="card-title">Adicionar Questão</h4>
+								</div>
+								
+								<div class="card-body">
+	            					<p class="card-category">campos obrigatorios <span style="color: red">*</span></p>
+	            	
+				                    <div class="row">                   
+				                    	<div class="col-md-10">
+					                 		<div class="form-group">
+					                        	<label>Nome<span style="color: red">*</span></label>
+					                        	<input type="text" id="nome" class="form-control" placeholder="ex:. TADS" required>
+					                      	</div>                		
+					                	</div>
+				                    </div>                   
+	            				</div>
+								
+								<div class="card-footer text-right">
+									<button type="submit" class="btn btn-info">Salvar</button>
+								</div>
+
+							</div>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

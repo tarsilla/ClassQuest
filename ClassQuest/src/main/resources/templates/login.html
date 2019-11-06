@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<head>
+	<meta charset="utf-8">
+	<title>ClassQuest</title>
+	<link rel="icon" href="imgs/favicon.png">
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/animate.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/owl.carousel.min.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/all.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/flaticon.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/themify-icons.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/magnific-popup.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/slick.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/login.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/hamburgers.min.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+	<header class="main_menu home_menu">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-12">
+					<nav class="navbar navbar-expand-lg navbar-light">
+						<a class="navbar-brand" href="index.html"> 
+							<img src="imgs/logo.png" alt="logo">
+						</a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="menu_icon"><i class="fas fa-bars"></i></span>
+						</button>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<section class="banner_part">
+		<div class="container">
+			<div class="row align-items-center">
+			
+				<div class="col-lg-7">
+					<div class="banner_text">
+						<div class="banner_text_iner">
+							<h1>O melhor lugar para o professor!</h1>
+							<p>Aqui você podera guardar documentos, criar salas, atividades e muito mais!</p>
+							<a class="btn_2" th:href="@{/usuario/add}">Cadastre-se</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-5">
+					<div class="limiter">
+					<div class="wrap-login100">
+						<form class="login100-form validate-form" action="/entrar" method="post">
+							<span class="login100-form-title">Entrar</span>
+
+							<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+								<input class="input100" type="text" name="username" placeholder="Usuario"> 
+								<span class="focus-input100"></span>
+									<span class="symbol-input100"> 
+										<i class="fa fa-envelope" aria-hidden="true"></i>
+									</span>
+							</div>
+
+							<div class="wrap-input100 validate-input" data-validate="Password is required">
+								<input class="input100" type="password" name="password" placeholder="Password">
+								<span class="focus-input100"></span>
+									<span class="symbol-input100"> 
+										<i class="fa fa-lock" aria-hidden="true"></i>
+									</span>
+							</div>
+
+							<div class="container-login100-form-btn">
+								<button class="login100-form-btn">Login</button>
+							</div>
+
+							<div class="text-center p-t-12">
+								<span class="txt1"> Forgot </span> 
+									<a class="txt2" href="#">
+										Username / Password? </a>
+							</div>
+						</form>	
+					</div>
+				</div>
+				</div>			
+			</div>
+		</div>
+	</section>
+	
+	<section class="use_sasu">
+		<div class="container">
+		
+			<div class="row justify-content-center">
+				<div class="col-lg-8">
+					<div class="section_tittle text-center">
+						<h2>Sobre Nós</h2>
+						<p>Três razões que farão com que você se interesse por nós!</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row justify-content-center">
+				<div class="col-lg-3 col-sm-6">
+					<div class="single_feature">
+						<div class="single_feature_part">
+							<img src="imgs/icon/feature_icon_1.png" alt="">
+							<h4>Otimiza o tempo na sala de aula</h4>
+							<p>Aqui você descobrira, um outro mundo, dotado de facilidades,
+							 comunicabilidade, intuitivo e facil de manusear,
+							 nunca foi tão facil passar questionarios e atividades para seus alunos!</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-3 col-sm-6">
+					<div class="single_feature">
+						<div class="single_feature_part">
+							<img src="imgs/icon/feature_icon_2.png" alt="">
+							<h4>Aproxima o aprendizado formal ao informal</h4>
+							<p>A Tecnologia na Educação que você nescessitava para poder
+							 trabalhar em qualquer lugar ou hora, basta se cadastrar,
+							 e começar a se divertir, pois o ClassQuest é tão facil,
+							  que você trabalhando nem ver o tempo passar!</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-3 col-sm-6">
+					<div class="single_feature">
+						<div class="single_feature_part">
+							<img src="imgs/icon/feature_icon_1.png" alt="">
+							<h4>Melhora a aprendizagem contínua</h4>
+							<p>Os estudantes principalmente das gerações Y e Z sentem-se
+							 mais a vontade estudando com tecnologias ...</p>
+						</div>
+					</div>
+				</div>
+	
+			</div>	
+		</div>
+		
+		<img src="imgs/animate_icon/Shape-14.png" alt="" class="feature_icon_1">
+		<img src="imgs/animate_icon/Shape-10.png" alt="" class="feature_icon_2">
+		<img src="imgs/animate_icon/Shape.png" alt="" class="feature_icon_3">
+		<img src="imgs/animate_icon/shape-13.png" alt="" class="feature_icon_4">
+	</section>
+
+	<section class="about_us section_padding">
+		<div class="container">
+		
+			<div class="row align-items-center justify-content-between">
+				<div class="col-md-6 col-lg-5">
+					<div class="about_us_text">
+						<h2>Conecte-se</h2>
+						<p>Com recursos intuitivos e armazenamento ilimitado, crie rapidamente grupos, atribua tarefas domésticas, agende testes, gerencie o progresso e muito mais. Tudo isso bem aqui, ta esperando o que?</p>
+						<a href="#" class="btn_1">get started</a> 
+						<a href="#" class="btn_2">sing up free</a>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-6">
+					<div class="learning_img">
+						<img src="imgs/about_img.png" alt="">
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		<img src="imgs/left_sharp.png" alt="" class="left_shape_1"> 
+		<img src="imgs/about_shape.png" alt="" class="about_shape_1"> 
+		<img src="imgs/animate_icon/Shape-16.png" alt="" class="feature_icon_1">
+		<img src="imgs/animate_icon/Shape-1.png" alt="" class="feature_icon_4">
+		
+	</section>
+	
+	<section class="about_us right_time section_padding">
+		<div class="container">
+			<div class="row align-items-center justify-content-between">
+				<div class="col-md-6 col-lg-6">
+					<div class="learning_img">
+						<img src="imgs/about_img_1.png" alt="">
+					</div>
+				</div>
+				
+				<div class="col-md-6 col-lg-5">
+					<div class="about_us_text">
+						<h2>Duvidas?</h2>
+						<p>Fale Conosco! Estamos disponiveis de segunda a sexta, das 8h as 14h, também aos sabados das 8h as 12h!</p>
+						<a href="#" class="btn_1">get started</a> 
+						<a href="#" class="btn_2">sing up free</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<img src="imgs/about_shape.png" alt="" class="about_shape_1"> 
+		<img src="imgs/animate_icon/Shape-1.png" alt="" class="feature_icon_1">
+		<img src="imgs/animate_icon/shape.png" alt="" class="feature_icon_4">
+	</section>
+
+	<footer class="footer_part">
+		<div class="container">
+			<hr>
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="copyright_text">
+						<P>
+							ClassQuest &copy Seu site
+							<script>
+								document.write(new Date().getFullYear());
+							</script>
+							| Todos os direitos reservados.
+						</P>
+					</div>
+				</div>
+				
+				<div class="col-lg-4">
+					<div class="footer_icon social_icon">
+						<ul class="list-unstyled">
+							<li>
+								<a href="#" class="single_social_icon">
+								<i class="fab fa-facebook-f"></i></a>
+							</li>
+							<li>
+								<a href="#" class="single_social_icon">
+								<i class="fab fa-twitter"></i></a>
+							</li>
+							<li>
+								<a href="#" class="single_social_icon">
+								<i class="fas fa-globe"></i></a>
+							</li>
+							<li>
+								<a href="#" class="single_social_icon">
+								<i class="fab fa-behance"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/login.js}"></script>
+</body>
+</html>

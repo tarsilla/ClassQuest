@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>ClassQuest - Cadastro</title>
+	<link rel="icon" href="imgs/favicon.png">
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/animate.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/hamburgers.min.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/animsition.min.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/daterangepicker.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/select2.min.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/main.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/util.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" method="post" th:object="${usuario}" th:action="@{/usuario/save}">
+				<input id="id" name="id" type="hidden" th:field="*{id}" th:value="*{id}">
+				<span class="contact100-form-title">
+					Cadastre-se
+				</span>
+
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Nome</span>
+					<input class="input100" type="text" th:field="*{nome}" name="nome" placeholder="ex:. Maria das Graça">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Email</span>
+					<input class="input100" type="email" th:field="*{email}" name="email" placeholder="ex:. maria@gmail.com">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Username</span>
+					<input class="input100" type="text" th:field="*{username}" name="username" placeholder="ex:. maria">
+					<span class="focus-input100"></span>
+				</div>
+				
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Senha</span>
+					<input class="input100" type="password" th:field="*{password}" name="password" placeholder="ex:. *******">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-inpu">
+					 <span class="label-input100">Selecione o Papel:</span>			
+					 <div th:each="role : ${roles}">
+						 <input type="checkbox" th:field="*{role}" th:value="${role.id}"><span th:text="${'  '}"></span><span th:text="${role.nome}"></span><br>
+					 </div>	
+					 <span class="focus-input100"></span>		 
+				 </div>
+				
+				<div class="container-contact100-form-btn">
+					<div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+						<button class="contact100-form-btn">
+							<span>
+								Cadastrar
+							</span>
+						</button>
+					</div>
+				</div>
+				
+			</form>
+		</div>
+	</div>
+
+	<div id="dropDownSelect1"></div>
+	
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/animsition.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/select2.min.js}"></script>
+	<script>
+		$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+	</script>
+</body>
+</html>

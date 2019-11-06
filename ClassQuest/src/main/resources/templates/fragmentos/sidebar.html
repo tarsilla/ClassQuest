@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	  xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+<body>
+<div  th:fragment="menu-lateral" class="sidebar"> 
+
+	<div class="logo">
+      <a th:href="@{/home/home}" class="simple-text logo-mini"><i class="material-icons"></i></a>
+      <a th:href="@{/home/home}"  class="simple-text logo-normal">ClassQuest</a>
+    </div>
+      
+    <div class="sidebar-wrapper">
+        
+        <ul class="nav">
+        	<li class="nav-item">
+            	<a class="nav-link" th:href="@{/}">
+              		<i class="material-icons">dashboard</i>
+              		<span>Home</span>
+            	</a>
+          	</li>
+          	
+          	<li class="nav-item">
+            	<a class="nav-link" th:href="@{/perfil/perfil}">
+              		<i class="material-icons">account_box</i>
+              		<span>Perfil</span>
+            	</a>
+          	</li>
+          
+          	<li  class="nav-item ">
+            	<a class="nav-link" data-toggle="collapse" href="#cadastros">
+              		<i class="material-icons">picture_in_picture_alt</i>
+              		<p>
+              			Turma
+              			<b class="caret"></b>
+              		</p>
+            	</a>     	
+            	<div class="collapse" id="cadastros">
+              		<ul class="nav">
+
+	              		    <li class="nav-item ">
+			                  	<a class="nav-link" th:href="@{/turma/cadastro}">
+			                    	<i class="material-icons">add_circle</i>
+			                    	<span class="sidebar-normal">Nova Turma</span>
+			                    </a>
+			                 </li>
+                		<li class="nav-item" >
+                  			<a class="nav-link" th:href="@{/turma/minhaTurma}">
+                  				<i class="material-icons">view_agenda</i>
+                    			<span class="sidebar-normal">Minhas Turmas</span>
+                  			</a>
+                		</li>      		
+                   </ul>
+               </div>
+          </li>
+          
+	          <li  class="nav-item">
+	            	<a class="nav-link" data-toggle="collapse" href="#questoes">
+	              		<i class="material-icons">account_balance</i>
+	              		<p> Banco de Questões <b class="caret"></b></p>
+	            	</a>     	
+	            	<div class="collapse" id="questoes">
+	              		<ul class="nav">
+	                		<li class="nav-item">
+	                  			<a class="nav-link" th:href="@{/questao/questao}">
+	                    			<i class="material-icons">add_circle</i>
+	                    			<span class="sidebar-normal"> Adicionar Questão</span>
+	                  			</a>
+	                		</li>      		
+	                		 <li class="nav-item ">
+			                  	<a class="nav-link">
+			                    	<i class="material-icons">chrome_reader_mode</i>
+			                    	<span class="sidebar-normal"> Gerenciar Questões</span>
+			                    </a>
+			                 </li>
+			                 <li class="nav-item ">
+			                  	<a class="nav-link">
+			                    	<i class="material-icons">find_in_page</i>
+			                    	<span class="sidebar-normal"> Consultar</span>
+			                    </a>
+			                 </li>
+	                   </ul>
+	               </div>
+	          </li>
+          <li class="nav-item">
+            	<a class="nav-link" th:href="@{/logout}">
+              		<i class="material-icons">forward</i>
+              		<span>Sair</span>
+            	</a>
+          	</li>
+         
+        </ul>
+      </div>
+    </div>
+</body>
+</html>
