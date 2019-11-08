@@ -16,7 +16,7 @@
 					<div class="col-md-12">
 						<form id="RegisterValidation" th:object="${questao}"
 							th:action="@{questionario/questao}" method="POST">
-							
+
 							<div class="card ">
 								<div class="card-header  card-header-icon card-header-info">
 									<div class="card-icon">
@@ -24,20 +24,25 @@
 									</div>
 									<h4 class="card-title">Adicionar Questão</h4>
 								</div>
-								
+
 								<div class="card-body">
-	            					<p class="card-category">campos obrigatorios <span style="color: red">*</span></p>
-	            	
-				                    <div class="row">                   
-				                    	<div class="col-md-10">
-					                 		<div class="form-group">
-					                        	<label>Nome<span style="color: red">*</span></label>
-					                        	<input type="text" id="nome" class="form-control" placeholder="ex:. TADS" required>
-					                      	</div>                		
-					                	</div>
-				                    </div>                   
-	            				</div>
-								
+									<p class="card-category">
+										campos obrigatorios <span style="color: red">*</span>
+									</p>
+
+									<div class="row">
+										<div class="col-md-10">
+											<div class="form-group">
+												<label for="questao.tema.disciplina.id"></label> 
+												<select id="questao.tema.disciplina.id" class="form-control" name="disciplinas"> 
+													<option value="">Selecione uma disciplina <span style="color: red">*</span></option>
+													<option th:value="${disciplina.descricao}" th:each="disciplina : ${disciplinas}" th:text="${disciplina.descricao}"></option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+
 								<div class="card-footer text-right">
 									<button type="submit" class="btn btn-info">Salvar</button>
 								</div>

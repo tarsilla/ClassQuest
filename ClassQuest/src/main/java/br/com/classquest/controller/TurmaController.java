@@ -1,5 +1,7 @@
 package br.com.classquest.controller;
 
+import java.util.Random;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +32,17 @@ public class TurmaController {
 		service.save(turma);
 		atribute.addFlashAttribute("mensagem","Turma Cadastrada com sucesso!");
 		ModelAndView mv = new ModelAndView("redirect:/turma/minhaTurma");
+
 		return mv;
 	}
 	
 	@RequestMapping("/cadastro")
 	public ModelAndView cadastrar(Turma turma) {
 		ModelAndView view = new ModelAndView("turma/novaTurma");
+		
+		turma.setCodigo("dfdfd");
 		view.addObject("turma", turma);
+	
 		return view;
 	}
 	

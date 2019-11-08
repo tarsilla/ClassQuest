@@ -35,8 +35,10 @@
 					                	</div>
 					                	<div class="col-md-2">
 					                 		<div class="form-group">
+					                 		
 					                        	<label>Código<span style="color: red">*</span></label>
-					                        	<input type="text" id="codigo" th:field="*{codigo}" class="form-control" required>
+					                        	<input type="text" id="codigo" th:field="*{codigo}" th:value="${codigo}" class="form-control" />
+					                        	
 					                      	</div>                		
 					                	</div>
 				                    </div> 
