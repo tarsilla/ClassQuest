@@ -7,22 +7,22 @@
 <div  th:fragment="menu-lateral" class="sidebar"> 
 
 	<div class="logo">
-      <a th:href="@{/home/home}" class="simple-text logo-mini"><i class="material-icons"></i></a>
-      <a th:href="@{/home/home}"  class="simple-text logo-normal">ClassQuest</a>
+      <a th:href="@{/}" class="simple-text logo-mini"><i class="material-icons"></i></a>
+      <a th:href="@{/}"  class="simple-text logo-normal">ClassQuest</a>
     </div>
       
     <div class="sidebar-wrapper">
         
         <ul class="nav">
         	<li class="nav-item">
-            	<a class="nav-link" th:href="@{/usuario/add}">
+            	<a class="nav-link" th:href="@{/}">
               		<i class="material-icons">dashboard</i>
               		<span>Home</span>
             	</a>
           	</li>
           	
           	<li class="nav-item">
-            	<a class="nav-link" th:href="@{/perfil/perfil}">
+            	<a class="nav-link" th:href="@{/perfil}">
               		<i class="material-icons">account_box</i>
               		<span>Perfil</span>
             	</a>
@@ -69,13 +69,13 @@
 	                  			</a>
 	                		</li>      		
 	                		 <li class="nav-item ">
-			                  	<a class="nav-link">
+			                  	<a class="nav-link" th:href="@{/questao/gerenciar}">
 			                    	<i class="material-icons">chrome_reader_mode</i>
 			                    	<span class="sidebar-normal"> Gerenciar Questões</span>
 			                    </a>
 			                 </li>
 			                 <li class="nav-item ">
-			                  	<a class="nav-link">
+			                  	<a class="nav-link" th:href="@{/questao/consultar}">
 			                    	<i class="material-icons">find_in_page</i>
 			                    	<span class="sidebar-normal"> Consultar</span>
 			                    </a>

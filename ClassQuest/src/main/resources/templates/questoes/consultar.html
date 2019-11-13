@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layout}">
+
+<head>
+	<title>Consulta</title>
+</head>
+<body>
+	<div layout:fragment="corpo">
+	
+		<div class="card">
+			<div class="card-header  card-header-icon card-header-info">
+			
+				<div class="card-icon">
+					<i class="material-icons">find_in_page</i>
+				</div>
+				
+				<h4 class="card-title">Banco de Questões</h4>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+				
+					<table id="datatables" class="table">
+						<thead>
+							<tr>
+								<th class="text-center">#</th>
+								<th>Disciplina</th>
+								<th>Tema</th>
+								<th>Questão</th>
+								<th class="text-right">Ações</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr th:each="questao: ${questoes}">
+							
+								<td class="text-center" th:text="${questao.id}"></td>
+								<td th:text="${questao.tema.disciplina.descricao}"></td>
+								<td th:text="${questao.tema.assunto}"></td>
+                        		<td th:text="${questao.informacao}"></td>
+                        		
+								<td class="td-actions text-right">
+									<a th:href="@{/questao/verQuestao}">
+										<button type="button" rel="tooltip" class="btn btn-info">
+											<i class="material-icons">visibility</i>
+										</button>
+									</a> 
+									<a th:href="@{/questao/editar/{id}(id=${questao.id})}">
+										<button type="button" rel="tooltip" class="btn btn-success">
+											<i class="material-icons">edit</i>
+										</button>
+									</a> 
+									<a th:href="@{/questao/remover/{id}(id=${questao.id})}">
+										<button type="button" rel="tooltip" class="btn btn-danger">
+											<i class="material-icons">close</i>
+										</button>
+									</a>
+								</td>
+							</tr>
+						</tbody>			
+					</table>
+				</div>	
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -7,10 +7,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/questao")
-public class QuestionarioController {
+public class QuestaoController {
 
 	@GetMapping("/questao")
 	   public ModelAndView view (){
-		   return new ModelAndView("/questionario/questao");
+		   return new ModelAndView("/questoes/questao");
+	}
+	
+	@GetMapping("/gerenciar")
+	   public ModelAndView gerenciar (){
+		   return new ModelAndView("/questoes/gerenciar");
+	}
+	
+	@GetMapping("/consultar")
+	   public ModelAndView consultar (){
+		   return new ModelAndView("/questoes/consultar");
 	}
 }

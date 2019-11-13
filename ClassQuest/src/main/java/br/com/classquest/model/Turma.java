@@ -32,8 +32,6 @@ public class Turma implements Serializable{
 	@NotBlank(message="Nome é uma informação obrigatoria!")
 	private String nome;
 	
-	@Column(length = 10, nullable = false)
-	@NotBlank(message="Código é uma informação obrigatoria!")
 	private String codigo;
 	
 	@Column(nullable = false)

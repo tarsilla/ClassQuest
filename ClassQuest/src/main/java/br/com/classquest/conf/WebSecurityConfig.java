@@ -24,6 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 				.antMatchers("/questionario/**").hasAnyAuthority("PRO")
 				.antMatchers("/imgs/**").permitAll()
+				.antMatchers("/usuario/cadastro").permitAll()
 				.antMatchers("/static/**").permitAll()
 				.antMatchers("/resources/**").permitAll()
 				.antMatchers("/assets/**").permitAll()

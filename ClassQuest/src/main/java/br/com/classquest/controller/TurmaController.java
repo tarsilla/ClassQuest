@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.classquest.model.Turma;
+import br.com.classquest.model.Usuario;
 import br.com.classquest.service.TurmaService;
 
 @Controller
@@ -26,21 +27,30 @@ public class TurmaController {
 	
 	@PostMapping("/saveTurma")
 	public ModelAndView saveTurma(@Valid Turma turma,BindingResult result, RedirectAttributes atribute) {
+
+				
 		if(result.hasErrors()) {
 			return cadastrar(turma);
 		}
 		service.save(turma);
 		atribute.addFlashAttribute("mensagem","Turma Cadastrada com sucesso!");
-		ModelAndView mv = new ModelAndView("redirect:/turma/minhaTurma");
-
-		return mv;
+	ModelAndView mv = new ModelAndView("redirect:/turma/minhaTurma");
+	return mv;
 	}
 	
 	@RequestMapping("/cadastro")
 	public ModelAndView cadastrar(Turma turma) {
 		ModelAndView view = new ModelAndView("turma/novaTurma");
+		String[] carct ={"0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 		
-		turma.setCodigo("dfdfd");
+		String token="";
+	
+		for (int i=0; i<8; i++){
+	        int indice = (int) (Math.random()* carct.length);
+	        token += carct[indice];
+		}
+		
+		turma.setCodigo(token);
 		view.addObject("turma", turma);
 	
 		return view;
