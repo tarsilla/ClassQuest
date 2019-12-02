@@ -1,25 +1,28 @@
 package br.com.classquest.model;
 
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import br.com.classquest.enums.Status;
-import br.com.classquest.enums.TipoUsuario;
 
 @Entity
 public class Usuario implements UserDetails {
@@ -29,28 +32,37 @@ public class Usuario implements UserDetails {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	public Usuario() {
+		this.dataCriacao = Calendar.getInstance().getTime();
+		this.enabled = true;
+		this.accountNonExpired = true;
+		this.accountNonLocked = true;
+		this.credentialsNonExpired = true;
+	}
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
 	@Column(nullable=false, length=70)
+	@NotBlank(message = "Nome é uma informação obrigatória.")
 	private String nome;
 	
 	@Column(nullable=false, length=70)
+	@NotBlank(message = "Email é uma informação obrigatória.")
 	private String email;
 	
 	@Column(unique = true)
+	@Size(min = 4, message = "USERNAME dev ter pelo menos 4 letras")
 	private String username;
 	
-	@Column(nullable=false, length=70)
-	private String password;
+	@Column(nullable = false, length = 255)
+	@NotBlank(message = "Senha é uma informação obrigatória.")
+	private String senha;
 	
-	@Column(nullable=false)
+	/*@Column(nullable=false)
 	@Enumerated(EnumType.STRING)
-	private Status status;
-
-	private TipoUsuario tipousuario;
+	private Status status;*/
 
 	/*@OneToOne(optional = true)
 	private Aluno aluno;
@@ -65,34 +77,23 @@ public class Usuario implements UserDetails {
 	@ManyToMany
 	private Set<Role> role = new HashSet<Role>();
 	
-	public Set<Role> getRole() {
-		return role;
-	}
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataCriacao;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataUpdate;
 
-	public void setRole(Set<Role> role) {
-		this.role = role;
-	}
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date ultimoAcesso;
+	
+	private boolean accountNonExpired;
 
-	public String getUsername() {
-		return username;
-	}
+	private boolean accountNonLocked;
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+	private boolean credentialsNonExpired;
 
-	public TipoUsuario getTipousuario() {
-		return tipousuario;
-	}
-
-	public void setTipousuario(TipoUsuario tipousuario) {
-		this.tipousuario = tipousuario;
-	}
-
-	public Usuario() {
-		status = Status.ATIVO;
-	}
-
+	private boolean enabled;
+	
 	public Long getId() {
 		return id;
 	}
@@ -109,6 +110,7 @@ public class Usuario implements UserDetails {
 		this.nome = nome;
 	}
 
+
 	public String getEmail() {
 		return email;
 	}
@@ -117,16 +119,12 @@ public class Usuario implements UserDetails {
 		this.email = email;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public String getSenha() {
+		return senha;
 	}
 
-	public Status getStatus() {
-		return status;
-	}
-
-	public void setStatus(Status status) {
-		this.status = status;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public byte[] getFoto() {
@@ -137,6 +135,62 @@ public class Usuario implements UserDetails {
 		this.foto = foto;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public Set<Role> getRole() {
+		return role;
+	}
+
+	public void setRole(Set<Role> role) {
+		this.role = role;
+	}
+
+	public Date getDataCriacao() {
+		return dataCriacao;
+	}
+
+	public void setDataCriacao(Date dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
+
+	public Date getDataUpdate() {
+		return dataUpdate;
+	}
+
+	public void setDataUpdate(Date dataUpdate) {
+		this.dataUpdate = dataUpdate;
+	}
+
+	public Date getUltimoAcesso() {
+		return ultimoAcesso;
+	}
+
+	public void setUltimoAcesso(Date ultimoAcesso) {
+		this.ultimoAcesso = ultimoAcesso;
+	}
+
+	public void setAccountNonExpired(boolean accountNonExpired) {
+		this.accountNonExpired = accountNonExpired;
+	}
+
+	public void setAccountNonLocked(boolean accountNonLocked) {
+		this.accountNonLocked = accountNonLocked;
+	}
+
+	public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+		this.credentialsNonExpired = credentialsNonExpired;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Set<GrantedAuthority> authorities = new HashSet<>();
@@ -145,32 +199,43 @@ public class Usuario implements UserDetails {
 	}
 
 	@Override
-	public String getPassword(){
-		return this.password;
+	public String getUsername() {
+		return this.email;
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.accountNonExpired;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.accountNonLocked;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.credentialsNonExpired;
+	}
+	
+	@Override
+	public String getPassword() {
+		return this.senha;
 	}
 
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.enabled;
+	}
+	
+	public String getRoleString() {
+		String txt="";
+		if(role!=null) {
+			for(Role r: role) {
+				txt+= r.getNome() + ", "; 
+			}
+		}
+		return txt;
 	}
 
 }

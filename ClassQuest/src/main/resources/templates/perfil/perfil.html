@@ -16,8 +16,7 @@
 				
 					<div class="col-md-12">
 						<form id="RegisterValidation" th:object="${usuario}"  method="POST">
-							<input id="id" name="id" type="hidden" th:field="*{id}"
-							th:value="*{id}">
+							<input id="id" name="id" type="hidden" th:field="*{id}" th:value="*{id}">
 							<div class="card ">
 								<div class="card-header  card-header-icon card-header-info">
 									<div class="card-icon">
@@ -28,7 +27,7 @@
 								<div class="card-body ">	
             	
 				                    <div class="row">                   
-				                    	<div class="col-md-6">
+				                    	<div class="col-md-12">
 					                 		<div class="form-group">
 					                        	<label>Nome</label>
 					                        	<input type="text" th:field="*{nome}" th:value="*{nome}" class="form-control" disabled>
@@ -46,13 +45,6 @@
 					                 		<div class="form-group">
 					                        	<label>Email</label>
 					                        	<input type="text" th:field="*{email}" th:value="*{email}" class="form-control" disabled>
-					                      	</div>                		
-					                	</div>
-					                	
-					                	<div class="col-md-6">
-					                 		<div class="form-group">
-					                        	<label>Tipo Usuario</label>
-					                        	<input type="text" class="form-control" th:field="*{tipousuario}" th:value="*{tipousuario}" disabled>
 					                      	</div>                		
 					                	</div>
 				                    </div> 

@@ -1,6 +1,7 @@
 package br.com.classquest.service;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,6 +12,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.classquest.model.Role;
@@ -23,48 +25,68 @@ public class UsuarioService implements UserDetailsService {
 	
 	@Autowired
 	private UsuarioRepository repository;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
-	public List<Usuario> findAll() {
-		return repository.findAll();
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		UserDetails user = repository.findByEmail(username);
+		org.springframework.security.core.userdetails.User userFinal = new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getPermissoes(user));
+		System.out.println(userFinal.getAuthorities());
+		return userFinal;
 	}
 	
-	public Usuario findOne(Long id) {
-		return repository.getOne(id);
+	private Collection<? extends GrantedAuthority> getPermissoes(UserDetails usuario) {
+		Set<SimpleGrantedAuthority> authorities = new HashSet<>();
+		
+		Set<Role> permissoes =  ((Usuario) usuario).getRole();
+		for(Role r : permissoes ) {
+			 authorities.add(new SimpleGrantedAuthority(r.getNome().toUpperCase()));
+		}
+		
+		return authorities;
 	}
 	
-	public Usuario save(Usuario usuario) {
-		return repository.saveAndFlush(usuario);
+	public boolean verificarSenha(String senha, Usuario usuario) {
+		return passwordEncoder.matches(senha, usuario.getPassword());
+	}
+	
+	public void add(Usuario usuario) {
+		usuario.setSenha(passwordEncoder.encode(usuario.getPassword()));
+		usuario.setDataCriacao(new Date());
+		usuario.setEnabled(true);
+		repository.saveAndFlush(usuario);
 	}
 	
 	public void delete(Long id) {
 		repository.deleteById(id);
 	}
 	
+	public List<Usuario> findAll() {
+		return repository.findAll();
+	}
+	
+	public Usuario getOne(Long id) {
+		return repository.getOne(id);
+	}
+	
+	public Usuario getEmail(String email) {
+		return repository.findByEmail(email);
+	}
+	
+	public Usuario findByEmailAndSenha(String email, String senha) {
+		return repository.findByEmailAndSenha(email, senha);
+	}
 	public Usuario findByUsername(String username){
 		return repository.findByUsername(username);
 	}
-
 	
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserDetails user = repository.findByUsername(username);
-		
-		org.springframework.security.core.userdetails.User userFinal = new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getPermissoes(user));
-		System.out.println(userFinal.getAuthorities());
-		return userFinal;
-		
+	public List<Usuario> buscarPorNome(String nome){
+		return repository.findByName(nome);
 	}
-	
-	
-	private Collection<? extends GrantedAuthority> getPermissoes(UserDetails usuario) {
-		Set<SimpleGrantedAuthority> authorities = new HashSet<>();
-			
-		Set<Role> permissoes =  ((Usuario) usuario).getRole();
-		for( Role r : permissoes ) {
-			 authorities.add( new SimpleGrantedAuthority(r.getNome().toUpperCase() ) );
-		}
-		
-		
-		return authorities;
+
+	public List<Usuario> buscarPorEmail(String email){
+		return repository.findEmail(email);
 	}
 }

@@ -53,6 +53,21 @@
 				
 				<div class="col-lg-5">
 					<div class="limiter">
+						<th:block th:if="${param.error}">
+	           	 		<div class="alert alert-danger">
+	           	 	 		<span id="usuario-invalido">Usuário e/ou inválidos!</span> 
+	           	 	 	</div>
+		           	 	</th:block>
+		           	 	<th:block th:if="${success != null}">
+		           	 		<div class="alert alert-success">
+		           	 	 		<span id="usuario-invalido" th:text="${success}"></span> 
+		           	 	 	</div>
+		           	 	</th:block>
+		           	 	<th:block th:if="${error != null}">
+		           	 		<div class="alert alert-danger">
+		           	 	 		<span id="usuario-invalido" th:text="${error}"></span> 
+		           	 	 	</div>
+		           	 	</th:block>
 					<div class="wrap-login100">
 						<form class="login100-form validate-form" action="/entrar" method="post">
 							<span class="login100-form-title">Entrar</span>
@@ -66,7 +81,7 @@
 							</div>
 
 							<div class="wrap-input100 validate-input" data-validate="Password is required">
-								<input class="input100" type="password" name="password" placeholder="Password">
+								<input class="input100" type="password" name="senha" placeholder="Password">
 								<span class="focus-input100"></span>
 									<span class="symbol-input100"> 
 										<i class="fa fa-lock" aria-hidden="true"></i>
@@ -79,7 +94,7 @@
 
 							<div class="text-center p-t-12">
 								<span class="txt1"> Forgot </span> 
-									<a class="txt2" href="#">
+									<a class="txt2" href="/usuario/atualizar">
 										Username / Password? </a>
 							</div>
 						</form>	
@@ -131,7 +146,7 @@
 				<div class="col-lg-3 col-sm-6">
 					<div class="single_feature">
 						<div class="single_feature_part">
-							<img src="imgs/icon/feature_icon_1.png" alt="">
+							<img src="imgs/icon/feature_icon_3.png" alt="">
 							<h4>Melhora a aprendizagem contínua</h4>
 							<p>Os estudantes principalmente das gerações Y e Z sentem-se
 							 mais a vontade estudando com tecnologias ...</p>
@@ -156,8 +171,6 @@
 					<div class="about_us_text">
 						<h2>Conecte-se</h2>
 						<p>Com recursos intuitivos e armazenamento ilimitado, crie rapidamente grupos, atribua tarefas domésticas, agende testes, gerencie o progresso e muito mais. Tudo isso bem aqui, ta esperando o que?</p>
-						<a href="#" class="btn_1">get started</a> 
-						<a href="#" class="btn_2">sing up free</a>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-6">

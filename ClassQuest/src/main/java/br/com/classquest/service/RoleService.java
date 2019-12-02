@@ -22,6 +22,10 @@ public class RoleService {
 		return repository.saveAndFlush(role);
 	}
 	
+	public Role getNome(String nome) {
+		return repository.findByNome(nome);
+	}
+	
 	public Role findByUsername(String nome){
 		return repository.findByUsername(nome);
 	}
