@@ -23,8 +23,11 @@ import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Entity
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Usuario implements UserDetails {
 
 	/**
@@ -71,7 +74,8 @@ public class Usuario implements UserDetails {
 	private Professor professor;*/
 		
 	@Lob
-	private byte[] foto;
+    @Column(name="imagem")
+    private byte[] imagem;
 	
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany
@@ -127,12 +131,12 @@ public class Usuario implements UserDetails {
 		this.senha = senha;
 	}
 
-	public byte[] getFoto() {
-		return foto;
+	public void setImagem(byte[] imagem) {
+		this.imagem = imagem;
 	}
-
-	public void setFoto(byte[] foto) {
-		this.foto = foto;
+	
+	public byte[] getImagem() {
+		return imagem;
 	}
 
 	public static long getSerialversionuid() {

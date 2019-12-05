@@ -19,7 +19,6 @@ import br.com.classquest.model.Role;
 import br.com.classquest.model.Usuario;
 import br.com.classquest.repository.UsuarioRepository;
 
-
 @Service
 public class UsuarioService implements UserDetailsService {
 	
@@ -31,6 +30,7 @@ public class UsuarioService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		System.out.println("entrou aqui...");
 		UserDetails user = repository.findByEmail(username);
 		org.springframework.security.core.userdetails.User userFinal = new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getPermissoes(user));
 		System.out.println(userFinal.getAuthorities());
@@ -58,6 +58,7 @@ public class UsuarioService implements UserDetailsService {
 		usuario.setEnabled(true);
 		repository.saveAndFlush(usuario);
 	}
+
 	
 	public void delete(Long id) {
 		repository.deleteById(id);
@@ -67,12 +68,20 @@ public class UsuarioService implements UserDetailsService {
 		return repository.findAll();
 	}
 	
+	public Usuario findOne(Long id) {
+        return repository.getOne(id);
+    }
+	
 	public Usuario getOne(Long id) {
 		return repository.getOne(id);
 	}
 	
 	public Usuario getEmail(String email) {
 		return repository.findByEmail(email);
+	}
+	
+	public Usuario findById(Long id) {
+		return repository.getOne(id);
 	}
 	
 	public Usuario findByEmailAndSenha(String email, String senha) {

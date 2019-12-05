@@ -1,6 +1,5 @@
 package br.com.classquest.controller;
 
-import java.util.Random;
 
 import javax.validation.Valid;
 
@@ -15,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.classquest.model.Turma;
-import br.com.classquest.model.Usuario;
 import br.com.classquest.service.TurmaService;
 
 @Controller

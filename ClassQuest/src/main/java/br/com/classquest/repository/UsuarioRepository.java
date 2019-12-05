@@ -11,7 +11,7 @@ import br.com.classquest.model.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	
-	//public Usuario findByUsername(String username);
+	Usuario findByUsername(String username);
 	
 	public List<Usuario> findByNomeLike(String name);
 	
@@ -21,8 +21,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	public Usuario findByEmailAndSenha(String email, String senha);
 	@Query
 	public Usuario findByNome(String nome);
-	@Query
-	Usuario findByUsername(String username);
 	
 	@Query("select u from Usuario u where u.nome = ?1")
 	public List<Usuario> findByName(String nome);

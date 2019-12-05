@@ -3,8 +3,6 @@ package br.com.classquest.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -22,7 +20,7 @@ public class IndexController {
 	@Autowired
 	private SessionService<Usuario> serviceSession;
 
-	/*@RequestMapping("/")
+	@RequestMapping("/")
 	public String index() {
 		
 		Usuario usuarioByEmail = serviceUsuario.getEmail(SecurityContextHolder.getContext().getAuthentication().getName());
@@ -42,9 +40,9 @@ public class IndexController {
 	@RequestMapping(method=RequestMethod.GET,path= {"/entrar"})
 	public String entrar() {
 		return "login";
-	}*/
+	}
 	
-	@PostMapping("/home") 
+	/*@PostMapping("/home") 
 	public String home() { 
 		
 		Usuario usuarioByEmail = serviceUsuario.getEmail(SecurityContextHolder.getContext().getAuthentication().getName());
@@ -65,5 +63,5 @@ public class IndexController {
 	@GetMapping("/entrar")
 	public String entrar() {
 		return "login";
-	}
+	}*/
 }

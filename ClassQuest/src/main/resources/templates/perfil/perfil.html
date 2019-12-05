@@ -1,62 +1,110 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
-        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
-
-	xmlns:th="http://www.w3.org/1999/xhtml" layout:decorate="~{layout}">
+<html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+        layout:decorate="~{layout}">
 <head>
-<meta charset="UTF-8">
-<title>Perfil</title>
+	<meta charset="UTF-8">
+	<title>Perfil</title>
 </head>
 <body>
 	<div layout:fragment="corpo">
 		<div class="content">
-			<div class="container-fluid">
-			
+			<div class="container-fluid">			
+				
 				<div class="row">
 				
 					<div class="col-md-12">
-						<form id="RegisterValidation" th:object="${usuario}"  method="POST">
-							<input id="id" name="id" type="hidden" th:field="*{id}" th:value="*{id}">
+						<form id="RegisterValidation" th:object="${usuario}" th:action="@{/perfil/save}"  method="POST">
+						
+							<input id="id" name="id" type="hidden" th:field="*{id}" th:value="*{id}"> 
+							
 							<div class="card ">
 								<div class="card-header  card-header-icon card-header-info">
 									<div class="card-icon">
-										<i class="material-icons">account_circle</i>
+										<i class="material-icons">add_circle</i>
 									</div>
 									<h4 class="card-title">Perfil</h4>
-									</div>
-								<div class="card-body ">	
-            	
-				                    <div class="row">                   
-				                    	<div class="col-md-12">
-					                 		<div class="form-group">
-					                        	<label>Nome</label>
-					                        	<input type="text" th:field="*{nome}" th:value="*{nome}" class="form-control" disabled>
-					                      	</div>                		
-					                	</div>
-					                	
-					                	<div class="col-md-6">
-					                 		<div class="form-group">
-					                        	<label>Username</label>
-					                        	<input type="text" th:field="*{username}" th:value="*{username}" class="form-control" disabled>
-					                      	</div>                		
-					                	</div>
-					                	
-					                	<div class="col-md-6">
-					                 		<div class="form-group">
-					                        	<label>Email</label>
-					                        	<input type="text" th:field="*{email}" th:value="*{email}" class="form-control" disabled>
-					                      	</div>                		
-					                	</div>
-				                    </div> 
 								</div>
+								
+								<br />
+								
+								<div class="card-body ">
+									<p class="card-category">campos obrigatorios <span style="color: red">*</span></p>
+									
+									 <div class="row">       
+									 	<div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+									
+											<div class="profile_img" th:if="${usuario.imagem}">
+												<div id="crop-avatar">
+													<img class="img-responsive avatar-view" id="fotopreview"
+														th:src="@{/perfil/image/{image_id}(image_id=${usuario.id})}"
+														alt="Avatar" title="Mudar a foto"
+														style="width: 200px; height: 300px">
+												</div>
+											</div>	
+											
+											<div class="profile_img" th:unless="${usuario.imagem}">
+												<div id="crop-avatar">
+													<img class="img-responsive avatar-view" id="fotopreview"
+														th:src="@{/imgs/user.png}" alt="Avatar" title="Mudar a foto"
+														style="width: 200px; height: 300px">
+												</div>
+											</div>	
+											
+											<br />
+	
+											<div class="card-footer text-right">
+												<button class="btn btn-info">Salvar Alterações</button>
+											</div>					
+										</div>
+										
+										<div class="col-md-9 col-sm-9 col-xs-12">
+										
+											<div class="col-md-8">
+						                 		<div class="form-group">
+						                        	<label for="usr">Nome<span style="color: red">*</span></label>
+						                        	<input type="text" id="usr" th:value="${usuario.nome}" th:field="${usuario.nome}" class="form-control" required>
+						                      	</div>                		
+						                	</div>
+						                
+					                	
+					                	</div>
+									 
+									 </div>
+								</div>
+												
 							</div>
-						</form>
-						
+						</form>						
 					</div>
-				</div>
-				
+				</div>				
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			//script para mudar foto do perfil
+			var uploadfoto = document.getElementById('uploadfoto');
+			var fotopreview = document.getElementById('fotopreview');
+
+			uploadfoto.addEventListener('change', function(e) {
+				showThumbnail(this.files);
+			});
+
+			function showThumbnail(files) {
+				if (files && files[0]) {
+					var reader = new FileReader();
+
+					reader.onload = function(e) {
+						fotopreview.src = e.target.result;
+					}
+
+					reader.readAsDataURL(files[0]);
+				}
+			}
+			//End script foto
+		});
+	</script>
+	
+	
 </body>
 </html>
