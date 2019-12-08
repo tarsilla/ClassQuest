@@ -3,12 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Home</title>
+	
 </head>
 <body>
 	<div id="content" layout:fragment="corpo">
 		<div class="row">
-			<p>hello</p>
-		</div>
+		 <ul class="nav nav-tabs">
+          <li><a href="#tab1" data-toggle="tab">Pedido</a></li>
+          <li><a href="#tab2" data-toggle="tab">Configura&ccedil;&otilde;es</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div class ="tab-pane active" id="tab1">
+            <p>Pedido</p>
+          </div>
+          <div class ="tab-pane" id="tab2">
+            <p>Confirguracoes</p>
+          </div>
+        </div>		</div>
 	</div>
+	
 </body>
 </html>

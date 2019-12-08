@@ -93,10 +93,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		return bCryptPasswordEncoder;
 	}
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 	
 	@Bean
 	SessionRegistry sessionRegistry() {

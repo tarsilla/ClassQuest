@@ -95,7 +95,7 @@ public class UsuarioService implements UserDetailsService {
 		return repository.findByName(nome);
 	}
 
-	public List<Usuario> buscarPorEmail(String email){
-		return repository.findEmail(email);
+	public Usuario buscarPorEmail(String email){
+		return repository.findByEmail(email);
 	}
 }

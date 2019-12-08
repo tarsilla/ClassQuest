@@ -15,7 +15,7 @@
 					<div class="col-md-12">
 						<form id="RegisterValidation" th:object="${usuario}" th:action="@{/perfil/save}"  method="POST">
 						
-							<input id="id" name="id" type="hidden" th:field="*{id}" th:value="*{id}"> 
+							 
 							
 							<div class="card ">
 								<div class="card-header  card-header-icon card-header-info">
@@ -38,17 +38,19 @@
 													<img class="img-responsive avatar-view" id="fotopreview"
 														th:src="@{/perfil/image/{image_id}(image_id=${usuario.id})}"
 														alt="Avatar" title="Mudar a foto"
-														style="width: 200px; height: 300px">
+														style="width: 200px; height: 100px">
+
 												</div>
-											</div>	
-											
+											</div>
 											<div class="profile_img" th:unless="${usuario.imagem}">
 												<div id="crop-avatar">
 													<img class="img-responsive avatar-view" id="fotopreview"
-														th:src="@{/imgs/user.png}" alt="Avatar" title="Mudar a foto"
-														style="width: 200px; height: 300px">
+														th:src="@{/imgs/user.png}" alt="Avatar"
+														title="Mudar a foto" style="width: 200px; height: 300px">
 												</div>
-											</div>	
+											</div>
+
+											<br />
 											
 											<br />
 	
@@ -58,15 +60,74 @@
 										</div>
 										
 										<div class="col-md-9 col-sm-9 col-xs-12">
-										
-											<div class="col-md-8">
-						                 		<div class="form-group">
-						                        	<label for="usr">Nome<span style="color: red">*</span></label>
-						                        	<input type="text" id="usr" th:value="${usuario.nome}" th:field="${usuario.nome}" class="form-control" required>
-						                      	</div>                		
-						                	</div>
-						                
-					                	
+											<ul class="nav nav-tabs">
+	          									<li><a href="#tab1" class="btn btn-secondary active" data-toggle="tab">Informações Básicas</a></li>
+	          									<li><a href="#tab2"  class="btn btn-secondary" data-toggle="tab">Privacidade</a></li>
+	        								</ul>
+	        								 
+	        								</br>
+	        								 
+	        								<div class="tab-content">
+          										<div class ="tab-pane active" id="tab1">
+        								
+													<div class="col-md-8">
+								                 		<div class="form-group">
+								                        	<label for="usr">Nome<span style="color: red">*</span></label>
+								                        	<input type="text" id="usr" th:value="${usuario.nome}" th:field="${usuario.nome}" class="form-control">
+								                      		<small>Informe seu nome completo</small>
+								                      	</div>                		
+								                	</div>
+								                	
+								                	<div class="col-md-8">
+								                 		<div class="form-group">
+								                        	<label for="usr">Username<span style="color: red">*</span></label>
+								                        	<input type="text" id="usr" th:value="${usuario.username}" th:field="${usuario.username}" class="form-control" >
+								                      		<small>Lembre-se!! este é o nome no qual você fará login no sistema</small>
+								                      	</div>                		
+								                	</div>
+								                
+								                	<div class="col-md-8">
+								                 		<div class="form-group">
+								                        	<label for="usr">Email<span style="color: red">*</span></label>
+								                        	<input type="text" id="usr" th:value="${usuario.email}" th:field="${usuario.email}" class="form-control">
+								                       		<small>Endereço de email no qual entraremos em contao com você quando necessário</small>
+								                       </div>                		
+								                	</div>
+								                	
+								                	<div class="col-md-8">
+								                        <label for="usr">Foto do Perfil<span style="color: red">*</span></label>
+								                        <input class="form-control" type="file" id="uploadfoto" name="uploadfile">
+								                       	<small>Escolha sua imagem preferida para pôr no perfil</small>		
+								                	</div>
+								                </div>
+								                
+								                <div class ="tab-pane" id="tab2">
+								                
+									            	<div class="col-md-8">
+								                 		<div class="form-group">
+								                        	<label for="usr">Senha Atual<span style="color: red">*</span></label>
+								                        	<input type="password" id="usr" th:field="${usuario.senha}" class="form-control">
+								                      		<small>Digite sua senha atual para poder por muda-la logo abaixo</small>
+								                      	</div>                		
+								                	</div>
+								                	
+								                	<div class="col-md-8">
+								                 		<div class="form-group">
+								                        	<label for="usr">Informe sua nova senha<span style="color: red">*</span></label>
+								                        	<input type="password" id="usr" name="novaSenha" class="form-control">
+								                      		<small>Digite sua nova senha para poder entrar no sistema</small>
+								                      	</div>                		
+								                	</div>
+								                	
+								                	<div class="col-md-8">
+								                 		<div class="form-group">
+								                        	<label for="usr">Informe sua nova senha<span style="color: red">*</span></label>
+								                        	<input type="password" id="usr" name="confirmeSenha" class="form-control">
+								                      		<small>Confirme sua sua nova senha para poder entrar no sistema</small>
+								                      	</div>                		
+								                	</div>
+									          	</div>
+					                		</div>
 					                	</div>
 									 
 									 </div>
@@ -79,7 +140,7 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
+		<script type="text/javascript">
 		$(document).ready(function() {
 
 			//script para mudar foto do perfil
@@ -104,7 +165,5 @@
 			//End script foto
 		});
 	</script>
-	
-	
 </body>
 </html>

@@ -11,7 +11,7 @@
   	<link rel="icon" type="image/png" th:href="@{/assets/img/favicon.png}">
   	<link rel="stylesheet" type="text/css" th:href="@{https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons}" />
   	<link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css}">
- 	<link th:href="@{/assets/css/material-dashboard.min.css?v=2.1.0}" rel="stylesheet" />
+ 	<link th:href="@{/css/material-dashboard.min.css?v=2.1.0}" rel="stylesheet" />
 </head>
 <body>
 	<div class="wrapper">
@@ -40,6 +40,7 @@
      	</div>
 	</div>
 	 <!--   Core JS Files   -->
+	 			<script th:src="@{/upload.js}"></script>
               <script th:src="@{/assets/js/core/jquery.min.js}"></script>
               <script th:src="@{/assets/js/core/popper.min.js}"></script>
               <script th:src="@{/assets/js/core/bootstrap-material-design.min.js}"></script>
@@ -84,18 +85,7 @@
               <script th:src="@{/assets/js/material-dashboard.min.js?v=2.1.0}" type="text/javascript"></script>
               <!-- Material Dashboard DEMO methods, don't include it in your project! -->
               <script th:src="@{/assets/demo/demo.js}"></script>
-              <!-- API via CEP para pegar endereco pelo CEP -->
-              <script th:src="@{/js/api/endereco.js}"></script>
-              <!-- Mascara CPFCNPJ -->
-              <script th:src="@{/js/mascara/CPFCNPJ.js}"></script>
-              <script th:src="@{/js/mascara/Telefone.js}"></script>
-              <script th:src="@{/js/mascara/CEP.js}"></script>
-              <script th:src="@{/js/mascara/Date.js}"></script>
-              <script th:src="@{/js/mascara/Number.js}"></script>
-              <!-- Componentes -->
-              <script th:src="@{/js/components/Previewimg.js}"></script>
-              <script th:src="@{/js/components/Validationpassword.js}"></script>
-               <script th:src="@{/js/components/addinput.js}"></script>
+  
               <script>
                 $(document).ready(function() {
                   $().ready(function() {
@@ -268,7 +258,7 @@
                 });
               </script>
               <!-- Sharrre libray -->
-              <script th:src="@{/assets/demo/jquery.sharrre.js}"></script>
+              <script th:src="@{/js/jquery.sharrre.js}"></script>
               
               <script>
                 $(document).ready(function() {
